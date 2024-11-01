@@ -2,7 +2,7 @@
   <div>
     <!--<img :src="logo" alt="Logo">-->
       <h1>Gestión de Empresas</h1>
-      <form @submit.prevent="addClient">
+      <form @submit.prevent="addEmpres">
         <input v-model="newEmpresa.param1" type="text" placeholder="Nombre Empresa" required /> <br><br>
         <input v-model.number="newEmpresa.param2" type="number" placeholder="Cantidad Empleados" required /> <br><br>
         <input v-model.number="newEmpresa.param3" type="number" placeholder="Cantidad proyectos" required /> <br><br>
@@ -83,7 +83,7 @@ export default {
       try {
         const response = await axios.post('https://api.yumserver.com/15357/generic/empresa', this.newEmpresa,
         { headers: { 'Content-Type': 'application/json' } })
-        this.clients.push(response.data)
+        this.clients.push(this.newEmpresa)
         this.resetForm()
       } catch (error) {
         this.errorMessage = 'Error al añadir empresa: ' + error.message

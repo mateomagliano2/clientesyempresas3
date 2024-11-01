@@ -81,7 +81,7 @@ export default {
       try {
         const response = await axios.post('https://api.yumserver.com/15357/generic/clientes', this.newClient,
         { headers: { 'Content-Type': 'application/json' } })
-        this.clients.push(response.data)
+        this.clients.push(this.newClient)
         this.resetForm()
       } catch (error) {
         this.errorMessage = 'Error al añadir cliente: ' + error.message
